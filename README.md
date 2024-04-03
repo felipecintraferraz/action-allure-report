@@ -25,7 +25,7 @@ Then, assuming you have a `allure-results` and a `allure-report` folder in your 
 ```bash
 docker run -v ${PWD}:/github/workspace allure-gen allure-results allure-report
 ```
-
+Credit to: [@afiore/action-allure-report](https://github.com/afiore/action-allure-report)
 
 
 

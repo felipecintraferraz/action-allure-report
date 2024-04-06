@@ -15,9 +15,9 @@ if [ ! -d "$REPORT_DIRECTORY" ]; then
   mkdir $REPORT_DIRECTORY
 fi
 
-if [ -d "$RESULTS_HISTORY" ]; then
-  echo "copying $RESULTS_HISTORY to $REPORT_HISTORY ..."
-  cp -r $RESULTS_HISTORY $REPORT_HISTORY
+if [ -d "$REPORT_HISTORY" ]; then
+  echo "copying $REPORT_HISTORY to $RESULTS_HISTORY ..."
+  cp -r $REPORT_HISTORY $RESULTS_HISTORY
 fi
 
 

@@ -15,6 +15,8 @@ echo "Final report will be stored at $REPORT_DIRECTORY"
 if [ ! -d "$REPORT_DIRECTORY" ]; then
   echo "creating report directory"
   mkdir $REPORT_DIRECTORY
+  echo "listing report directory"
+  ls -l $REPORT_DIRECTORY
 fi
 
 ls -l
@@ -33,6 +35,12 @@ fi
 unset JAVA_HOME
 echo "generating report ..."
 allure generate $RESULTS_DIRECTORY --clean
+
+echo "listing result directory after generation"
+echo "DIRECTORY: $RESULTS_DIRECTORY"
+ls -l $RESULTS_DIRECTORY
+echo "DIRECTORY: allure-report"
+ls -l allure-report
 
 echo "copying report files to $REPORT_DIRECTORY"
 cp -r allure-report/* $REPORT_DIRECTORY/

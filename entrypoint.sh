@@ -19,17 +19,18 @@ if [ ! -d "$REPORT_DIRECTORY" ]; then
   ls -l $REPORT_DIRECTORY
 fi
 
-ls -l
-if [ ! -d "allure-report" ]; then
-  echo "allure-report directory must be created"
-  mkdir allure-report
-  echo "allure-report folder created"
-fi
-
 if [ -d "$RESULTS_HISTORY" ]; then
   echo "copying $RESULTS_HISTORY to $REPORT_HISTORY ..."
   cp -r $RESULTS_HISTORY $REPORT_HISTORY
   cp -r $RESULTS_HISTORY allure-report
+fi
+
+if [ ! -d "allure-report" ]; then
+  echo "allure-report directory must be created"
+  mkdir allure-report
+  echo "allure-report folder created"
+  echo "listing allure-report folder:"
+  ls -l allure-report
 fi
 
 unset JAVA_HOME

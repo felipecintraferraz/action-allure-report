@@ -7,6 +7,7 @@ RUN apk update
 RUN apk add bash 
 RUN apk add wget 
 RUN apk add unzip 
+RUN apk add rsync
 
 RUN wget --no-verbose -O /tmp/allure-$RELEASE.zip $ALLURE_REPO/$RELEASE/allure-$RELEASE.zip \
   && unzip /tmp/allure-$RELEASE.zip -d / \

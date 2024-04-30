@@ -44,7 +44,7 @@ echo "DIRECTORY: allure-report"
 ls -l allure-report
 
 echo "copying report files to $REPORT_DIRECTORY"
-rsync -av --progress /github/workspace/allure-report/ /github/workspace$REPORT_DIRECTORY
+rsync -av --progress /github/workspace/allure-report/ /github/workspace/$REPORT_DIRECTORY
 
 echo "listing report directory ..."
 ls -l $REPORT_DIRECTORY

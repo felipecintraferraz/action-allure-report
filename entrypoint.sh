@@ -21,8 +21,8 @@ if [ ! -d "$REPORT_DIRECTORY" ]; then
 fi
 
 if [ -d "$RESULTS_HISTORY" ]; then
-  echo "copying $RESULTS_HISTORY to $REPORT_HISTORY ..."
-  cp -r $RESULTS_HISTORY $REPORT_HISTORY
+  echo "copying $REPORT_HISTORY to $RESULTS_HISTORY  ..."
+  cp -r $REPORT_HISTORY $RESULTS_HISTORY
 fi
 
 unset JAVA_HOME

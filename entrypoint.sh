@@ -11,6 +11,12 @@ REPORT_DIRECTORY=$2
 RESULTS_HISTORY=$RESULTS_DIRECTORY/history
 REPORT_HISTORY=$REPORT_DIRECTORY/history
 
+echo "Starting script to generate Allure Report ..."
+echo "Getting results from $RESULTS_DIRECTORY"
+echo "Final report will be stored at $REPORT_DIRECTORY"
+
+cp -r allure-report/history $RESULTS_DIRECTORY
+
 if [ ! -d "$REPORT_DIRECTORY" ]; then
   mkdir $REPORT_DIRECTORY
 fi
@@ -19,7 +25,6 @@ if [ -d "$RESULTS_HISTORY" ]; then
   echo "copying $RESULTS_HISTORY to $REPORT_HISTORY ..."
   cp -r $RESULTS_HISTORY $REPORT_HISTORY
 fi
-
 
 unset JAVA_HOME
 allure generate --clean

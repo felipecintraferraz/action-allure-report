@@ -11,10 +11,14 @@ echo "Starting script to generate Allure Report ..."
 echo "Getting results from $RESULTS_DIRECTORY"
 echo "Final report will be stored at $REPORT_DIRECTORY"
 
+cp -r allure-report/history $RESULTS_DIRECTORY
+
 if [ ! -d "$REPORT_DIRECTORY" ]; then
   echo "creating report directory"
   mkdir -p $REPORT_DIRECTORY
   echo "directory $REPORT_DIRECTORY created"
+  echo "listing report directory"
+  ls -l $REPORT_DIRECTORY
 fi
 
 if [ -d "$RESULTS_HISTORY" ]; then

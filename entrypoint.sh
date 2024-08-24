@@ -15,7 +15,7 @@ cp -r allure-report/history $RESULTS_DIRECTORY
 
 if [ ! -d "$REPORT_DIRECTORY" ]; then
   echo "creating report directory"
-  mkdir $REPORT_DIRECTORY
+  mkdir -p $REPORT_DIRECTORY
   echo "listing report directory"
   ls -l $REPORT_DIRECTORY
 fi

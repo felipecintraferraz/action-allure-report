@@ -1,10 +1,10 @@
-name: 'Allure report V227'
+name: 'Allure report generator V1'
 description: 'Generate Allure report for test suite'
 inputs:
-  results-dir:  # id of input
-    description: 'Allure test result data dir'
+  workspace-dir:  # id of input
+    description: 'Github workspace directory'
     required: true
-    default: 'allure-results'
+    default: '/github/workspace'
   report-dir:
     description: 'Allure report target dir'
     required: true
@@ -14,5 +14,5 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.results-dir }}
+    - ${{ inputs.workspace-dir }}
     - ${{ inputs.report-dir }}

@@ -1,20 +1,21 @@
 #! /usr/bin/env bash
 
-cd /github/workspace
-
-RESULTS_DIRECTORY=$1
+GITHUB_WORKSPACE=$1
 REPORT_DIRECTORY=$2
-RESULTS_HISTORY=$RESULTS_DIRECTORY/history
-REPORT_HISTORY=$REPORT_DIRECTORY/history
+
+RESULTS_HISTORY=$GITHUB_WORKSPACE/allure-results/history
+REPORT_HISTORY=$GITHUB_WORKSPACE/$REPORT_DIRECTORY/history
+
+cd $GITHUB_WORKSPACE
 
 echo "Starting script to generate Allure Report ..."
-echo "Getting results from $RESULTS_DIRECTORY"
+echo "Getting results from allure/results"
 echo "Final report will be stored at $REPORT_DIRECTORY"
 
-if [ ! -d "$REPORT_DIRECTORY" ]; then
+if [ ! -d "$GITHUB_WORKSPACE/$REPORT_DIRECTORY" ]; then
   echo "creating report directory"
-  mkdir -p $REPORT_DIRECTORY
-  echo "directory $REPORT_DIRECTORY created"
+  mkdir -p $GITHUB_WORKSPACE/$REPORT_DIRECTORY
+  echo "directory $GITHUB_WORKSPACE/$REPORT_DIRECTORY created"
 fi
 
 if [ -d "$RESULTS_HISTORY" ]; then
@@ -26,10 +27,8 @@ unset JAVA_HOME
 echo "generating report ..."
 allure generate $RESULTS_DIRECTORY --clean
 
-echo "listing result directory after generation"
-
-echo "copying report files to $REPORT_DIRECTORY"
-rsync -av --progress /github/workspace/allure-report/ /github/workspace/$REPORT_DIRECTORY
+echo "copying report files to $GITHUB_WORKSPACE/$REPORT_DIRECTORY"
+rsync -av --progress ./allure-report/ $GITHUB_WORKSPACE/$REPORT_DIRECTORY
 
 echo "listing report directory ..."
-ls -l $REPORT_DIRECTORY
+ls -l $GITHUB_WORKSPACE/$REPORT_DIRECTORY

@@ -4,7 +4,7 @@ GITHUB_WORKSPACE=$1
 REPORT_DIRECTORY=$2
 
 RESULTS_HISTORY=$GITHUB_WORKSPACE/allure-results/history
-REPORT_HISTORY=$GITHUB_WORKSPACE/$REPORT_DIRECTORY/history
+REPORT_HISTORY=$GITHUB_WORKSPACE/allure-report/history
 
 cd $GITHUB_WORKSPACE
 
@@ -20,12 +20,12 @@ fi
 
 if [ -d "$RESULTS_HISTORY" ]; then
   echo "copying $REPORT_HISTORY to $RESULTS_HISTORY  ..."
-  cp -r allure-report/history $RESULTS_HISTORY
+  cp -r allure-report/history allure-results
 fi
 
 unset JAVA_HOME
 echo "generating report ..."
-allure generate $RESULTS_DIRECTORY --clean
+allure generate allure-results --clean
 
 echo "copying report files to $GITHUB_WORKSPACE/$REPORT_DIRECTORY"
 rsync -av --progress ./allure-report/ $GITHUB_WORKSPACE/$REPORT_DIRECTORY
